@@ -3,6 +3,7 @@ import AppReducer from './AppReducer'
 const initialState = {
     watchlist: localStorage.getItem('watchlist') ? JSON.parse(localStorage.getItem('watchlist')) : [],
     watched: localStorage.getItem('wwatched') ? JSON.parse(localStorage.getItem('watched')) : [],
+    favouritelist: localStorage.getItem('favouritelist') ? JSON.parse(localStorage.getItem('favouritelist')) : []
 
 }
 
@@ -13,7 +14,8 @@ export const GlobalProvider = (props) => {
      useEffect(()=> {
          localStorage.setItem('watchlist', JSON.stringify(state.watchlist))
          localStorage.setItem('watched', JSON.stringify(state.watched))
-
+         localStorage.setItem('favouritelist', JSON.stringify(state.favouritelist))
+        
      }, [state])   
 
     const addMovieToWatchlist = (movie) => {
@@ -31,15 +33,21 @@ export const GlobalProvider = (props) => {
     const removeFromWatched = (id) => {
         dispatch({type:"REMOVE_FROM_WATCHED", payload:id})
     }
+
+    const addFavouriteMovielist= (movie) => {
+        dispatch({type:"ADD_FAVOURITE_MOVIELIST", payload:movie})
+    }
+
     return(
 
         <GlobalContext.Provider value={{watchlist: state.watchlist, 
-            watched: state.watched,
+            watched: state.watched, favouritelist: state.favouritelist,
          addMovieToWatchlist,
          removeMovieFromWatchlist,
          addMovieToWatched,
          moveToWatchlist,
-         removeFromWatched
+         removeFromWatched,
+         addFavouriteMovielist
          }}>
             {props.children}
         </GlobalContext.Provider>

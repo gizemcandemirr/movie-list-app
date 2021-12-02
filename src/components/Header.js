@@ -20,7 +20,7 @@ export const Header = () => {
                          <Link to="/watched">Watched </Link>
                      </li>
                      <li>
-                         <Link to="/watchlist">Favourite</Link>
+                         <Link to="/favourites">Favourite</Link>
                      </li>
                      <li>
                          <Link to="/add" className="btn">Search..</Link>

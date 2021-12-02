@@ -29,6 +29,12 @@ export default (state,action) => {
                     ...state,
                     watched: state.watched.filter(movie => movie.id !== action.payload)
                 }
+                case "ADD_FAVOURITE_MOVIELIST":
+                    return {
+                        ...state,
+                        watchlist: state.watchlist.filter((movie) => movie.id !== action.payload.id),
+                        favouritelist: [action.payload, ...state.favouritelist]
+                    }
 
         default:
             return state;
