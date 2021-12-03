@@ -21,6 +21,7 @@ export default (state,action) => {
             return {
                 ...state,
                 watched: state.watched.filter(movie => movie.id !== action.payload.id),
+                favouritelist: state.favouritelist.filter(movie => movie.id !== action.payload.id),
                 watchlist: [action.payload, ...state.watchlist]
             }
             
@@ -35,6 +36,12 @@ export default (state,action) => {
                         watchlist: state.watchlist.filter((movie) => movie.id !== action.payload.id),
                         favouritelist: [action.payload, ...state.favouritelist]
                     }
+
+                    case "REMOVE_MOVIE_FROM_FAVOURITELIST":
+                        return{
+                            ...state,
+                            favouritelist: state.favouritelist.filter(movie => movie.id !== action.payload)
+                        }
 
         default:
             return state;

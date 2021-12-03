@@ -37,6 +37,9 @@ export const GlobalProvider = (props) => {
     const addFavouriteMovielist= (movie) => {
         dispatch({type:"ADD_FAVOURITE_MOVIELIST", payload:movie})
     }
+    const removeMovieFromFavouritelist= (id) => {
+        dispatch({type: "REMOVE_MOVIE_FROM_FAVOURITELIST", payload: id});
+    }
 
     return(
 
@@ -47,7 +50,8 @@ export const GlobalProvider = (props) => {
          addMovieToWatched,
          moveToWatchlist,
          removeFromWatched,
-         addFavouriteMovielist
+         addFavouriteMovielist,
+         removeMovieFromFavouritelist
          }}>
             {props.children}
         </GlobalContext.Provider>
